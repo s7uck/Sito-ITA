@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<style>
+	body > header.texture {
+		min-height: 20vh;
+		padding-top: 5vh;
+		background-image: linear-gradient(black, transparent, black), url(/images/topography.svg);
+	}
+</style>
+<style media="only screen and (min-width: 600px)">
+	menu { row-gap: 2em;
+		column-gap: 2em; }
+</style>
+
+<main class="list">
+	{{ content }}
+</main>
