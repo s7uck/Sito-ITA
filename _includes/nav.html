@@ -1,0 +1,5 @@
+<nav>
+	<menu>{% for link in page.links %}
+		<li><a href="{{ link[1] }}"{% if link[1] == page.url %} class="accent"{% endif %}>{{ link[0] | replace: "_", " "  }}</a></li>{% endfor %}
+	</menu>
+</nav>

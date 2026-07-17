@@ -3,17 +3,38 @@ layout: default
 ---
 
 <style>
-	body > header.texture {
-		min-height: 20vh;
-		padding-top: 5vh;
-		background-image: linear-gradient(black, transparent, black), url(/images/topography.svg);
+	.hero h1, h1.hero {
+		font-size: 4rem;
+		color: #bdf6b2;
+		mix-blend-mode: difference;
+		margin: 0;
+		position: absolute;
+		text-align: right;
+		bottom: 1em;
+		right: 1em;
+	}
+
+	@media (max-width: 762px) {
+		.hero h1, h1.hero {
+			font-size: 2rem;
+		}
 	}
 </style>
-<style media="only screen and (min-width: 600px)">
-	menu { row-gap: 2em;
-		column-gap: 2em; }
-</style>
 
-<main class="list">
-	{{ content }}
-</main>
+<header class="hero">
+	<svg id="myself-geom" viewBox="0 0 1024 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%">
+		<defs>
+			<pattern id="myself" width="1" height="1">
+				<image href="sto flippato.jpg" x="0" y="-200" width="1024" height="800"/>
+			</pattern>
+		</defs>
+
+		<path d="M1021.62 0.5L114.95 399.5H0.5V0.5H1021.62Z" fill="url(#myself)" stroke="#CCCCCC"/>
+	</svg>
+
+	<!--img id="myself-mobi" src="sto flippato.jpg" style="width: 100%; height: 200px; object-fit: cover;"-->
+
+	<h1>[not yet]</h1>
+</header>
+
+{{ content }}
