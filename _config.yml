@@ -1,0 +1,21 @@
+title: Sito-ITA
+email: pfrancecsop252@gmail.com
+description: >-
+    
+baseurl: ""
+url: ""
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+plugins:
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      links:
+        links_out: "/links-out"
+        foto: "/gallery"
+        contatti: "/contatti"
