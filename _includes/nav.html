@@ -1,5 +1,6 @@
 <nav>
-	<menu>{% for link in page.links %}
-		<li><a href="{{ link[1] }}"{% if link[1] == page.url %} class="accent"{% endif %}>{{ link[0] | replace: "_", " "  }}</a></li>{% endfor %}
+	<menu{% if include.ani == 'yes' %} class="ani"{% endif %}>{% if page.url != "/" %}
+		<li><a href="/" title="pagina iniziale"><img src="/images/home.webp" alt="pagina iniziale"></a></li>{% endif %}{% for link in page.links %}
+		<li{% if link[1] == page.url %} class="accent"{% endif %}><a href="{{ link[1] }}">{{ link[0] | replace: "_", " "  }}</a></li>{% endfor %}
 	</menu>
 </nav>
