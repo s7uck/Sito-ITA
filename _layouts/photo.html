@@ -1,0 +1,80 @@
+---
+layout: default
+---
+
+<style>
+	body {
+		display: -ms-flex;
+		display: flex;
+		max-width: unset;
+	}
+
+	main.gridlock {
+		margin: 0;
+		flex-direction: column;
+	}
+
+	.timestamp, time { color: yellowgreen; text-align: right;}
+	td .icon { position: absolute; z-index: -10; opacity: .5; top: 0.2em; left: 0.2em;}
+</style>
+
+<style media="(max-width: 1000px)">
+body, main.gridlock { flex-direction: column;}
+main.gridlock { display: -ms-flex; display: flex;}
+</style>
+
+<style media="(min-width: 1001px)">
+figure>img {
+	max-width: 65vw;
+	min-height: 100vh;
+	height: 100vh;
+	max-height: 100%;
+}
+main {
+	width: 100%;
+	height: 100%;
+}
+</style>
+
+<figure>
+	<img src="{{ page.image }}" onclick="window.location = '{{ page.image }}'">
+</figure>
+
+<main class="gridlock">{% if !page.title.blank? %}
+	<header class="hero section">
+		<h1>{{ page.title }}</h1>
+	</header>
+{% endif %}
+
+	<figcaption class="section">
+		<table id="exifdata">
+			<tr class="ani">{% if page.camera != '' %}
+				<td class="section"><img class="icon" src="/images/camera.svg" alt="Camera">
+					{{ page.camera }}
+				</td>{% endif %}{% if page.location != '' %}
+				<td class="section"><img class="icon" src="/images/location.svg" alt="Location">
+					{{ page.location }}
+				</td>{% endif %}
+				<td class="timestamp section"><time>{{ page.date | date: "%b %-d %Y, %H:%M:%S" }}</time></td>
+			</tr>
+		</table>
+
+		<table id="settings">
+			<tr>
+				<th class="accent">{{ page.mode | upcase }}</th>
+		    	<td>f/{{ page.aperture }}</td>
+		    	<td>{{ page.sspeed }} seconds</td>
+		    	<td>ISO {{ page.iso }}</td>
+		    	<td>{{ page.focal }}</td>
+			</tr>
+		</table>
+	</figcaption>
+
+	<article class="section">
+		{{ content }}
+	</article>
+
+	<section class="center">
+		{% include nav.html %}
+	</section>
+</main>
