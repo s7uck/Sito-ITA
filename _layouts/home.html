@@ -3,36 +3,29 @@ layout: default
 ---
 
 <style>
-	.hero h1, h1.hero {
-		font-size: 4rem;
-		color: #bdf6b2;
-		mix-blend-mode: difference;
-		margin: 0;
-		position: absolute;
-		text-align: right;
-		bottom: 1em;
-		right: 1em;
-	}
-
-	@media (max-width: 762px) {
-		.hero h1, h1.hero {
-			font-size: 2rem;
-		}
+	#myself-mobi {
+		width: 100%; height: 200px;
+		display: none;
 	}
 </style>
 
+<style media="(max-width: 476px)">
+	#myself-geom { display: none;}
+	#myself-mobi { display: unset;}
+</style>
+
 <header class="hero">
-	<svg id="myself-geom" viewBox="0 0 1024 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%">
+	<svg id="myself-geom" viewBox="0 0 1024 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%">
 		<defs>
 			<pattern id="myself" width="1" height="1">
-				<image href="sto flippato.jpg" x="0" y="-200" width="1024" height="800"/>
+				<image href="sto flippato.jpg" x="0" y="-220" width="1024" height="800"/>
 			</pattern>
 		</defs>
 
 		<path d="M1021.62 0.5L114.95 399.5H0.5V0.5H1021.62Z" fill="url(#myself)" stroke="#CCCCCC"/>
 	</svg>
 
-	<!--img id="myself-mobi" src="sto flippato.jpg" style="width: 100%; height: 200px; object-fit: cover;"-->
+	<img id="myself-mobi" src="sto flippato.jpg">
 
 	<h1>[not yet]</h1>
 </header>

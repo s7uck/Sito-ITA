@@ -9,9 +9,9 @@ layout: home
 	</section>
 </main>
 
-<main class="gridlock">
+<main class="gridlock ani">
 	<section>
-		<h3>Cosa faccio?</h3>
+		<h3>Che faccio</h3>
 		<p>Oltre a studiare [inserisci facoltà qui] a [inserisci ateneo qui], mi dedico ai miei interessi&hellip;</p>
 	</section>
 	<section>
