@@ -13,7 +13,7 @@ module Jekyll
 			remote_exif_url = "#{photo_baseurl}EXIFDATA.json"
 
 			## UNCOMMENT FOR TESTING
-			remote_exif_url="https://pastebin.com/raw/nGkAHD0Z"
+			#remote_exif_url="https://pastebin.com/raw/nGkAHD0Z"
 
 			begin
 				URI.open(remote_exif_url) do |remote|
