@@ -46,11 +46,11 @@ header.hero {
 	position: relative;
 	padding: 0;
 }
-section, .section {
+section, .section, dialog {
 	border: 1px solid #444444a0;
 	padding: 1em;
 }
-section p, .section p {
+section p, .section p, dialog {
 	max-width: 80ch;
 }
 .title {

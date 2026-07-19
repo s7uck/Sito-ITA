@@ -2,7 +2,7 @@ title: Sito-ITA
 email: pfrancecsop252@gmail.com
 description: >-
     
-baseurl: ""
+baseurl: "/Sito-ITA"
 url: ""
 
 kramdown:
