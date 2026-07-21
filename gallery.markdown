@@ -24,12 +24,12 @@ permalink: /gallery
 		<img src="{{ photo.image }}" alt="{{ photo.title | default: photo.filename }}">
 
 		<figcaption>
-			<table>{% if photo.title != '' %}
+			<table>{% if photo.title %}
 				<tr><th><big>{{ photo.title }}</big></th></tr>{% endif %}
-				<tr>{% if photo.camera != '' %}
+				<tr>{% if photo.camera %}
 					<td><img class="icon" src="/images/camera.svg" alt="Camera">
 						{{ photo.camera }}
-					</td>{% endif %}{% if photo.location != '' %}
+					</td>{% endif %}{% if photo.location %}
 					<td><img class="icon" src="/images/location.svg" alt="Location">
 						{{ photo.location }}
 					</td>{% endif %}

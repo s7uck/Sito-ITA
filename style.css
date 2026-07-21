@@ -66,12 +66,14 @@ header, section, .section, footer, menu, .list, .grid {
 }
 .list { column-gap: 1em;}
 section.center, .section.center { padding: 2em 1em;}
+.gridlock, .flexlock {	
+	padding: 0;
+	max-width: unset;
+}
 .gridlock {
 	display: -ms-grid;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	padding: 0;
-	max-width: unset;
 }
 @media (min-width: 920px) {
 	.gridlock > .big { grid-column: span 2;}

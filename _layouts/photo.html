@@ -9,7 +9,7 @@ layout: default
 		max-width: unset;
 	}
 
-	main.gridlock {
+	main {
 		margin: 0;
 		flex-direction: column;
 	}
@@ -19,8 +19,7 @@ layout: default
 </style>
 
 <style media="(max-width: 1000px)">
-body, main.gridlock { flex-direction: column;}
-main.gridlock { display: -ms-flex; display: flex;}
+body { flex-direction: column;}
 </style>
 
 <style media="(min-width: 1001px)">
@@ -40,41 +39,43 @@ main {
 	<img src="{{ page.image }}" onclick="window.location = '{{ page.image }}'">
 </figure>
 
-<main class="gridlock">{% if !page.title.blank? %}
+<main class="flexlock">
 	<header class="hero section">
-		<h1>{{ page.title }}</h1>
+		{% unless page.title.blank? %}<h1>{{ page.title }}</h1>{% endunless %}
+		<nav>
+			<menu><li><a href="/gallery" onclick="history.back()"><img src="/images/back.svg"> foto</a></menu>
+		</nav>
 	</header>
-{% endif %}
 
 	<figcaption class="section">
 		<table id="exifdata">
-			<tr class="ani">{% if page.camera != '' %}
-				<td class="section"><img class="icon" src="/images/camera.svg" alt="Camera">
+			<tr class="ani">{% if page.camera %}
+				<td><img class="icon" src="/images/camera.svg" alt="Camera">
 					{{ page.camera }}
-				</td>{% endif %}{% if page.location != '' %}
-				<td class="section"><img class="icon" src="/images/location.svg" alt="Location">
+				</td>{% endif %}{% if page.location %}
+				<td><img class="icon" src="/images/location.svg" alt="Location">
 					{{ page.location }}
 				</td>{% endif %}
-				<td class="timestamp section"><time>{{ page.date | date: "%b %-d %Y, %H:%M:%S" }}</time></td>
+				<td class="timestamp"><time>{{ page.date | date: "%b %-d %Y, %H:%M:%S" }}</time></td>
 			</tr>
-		</table>
+		</table>{% if page.mode %}
 
 		<table id="settings">
 			<tr>
 				<th class="accent">{{ page.mode | upcase }}</th>
-		    	<td>f/{{ page.aperture }}</td>
-		    	<td>{{ page.sspeed }} seconds</td>
-		    	<td>ISO {{ page.iso }}</td>
-		    	<td>{{ page.focal }}</td>
+		    	{% if page.aperture %}<td>f/{{ page.aperture }}</td>{% endif %}
+		    	{% if page.sspeed %}<td>{{ page.sspeed }} seconds</td>{% endif %}
+		    	{% if page.iso %}<td>ISO {{ page.iso }}</td>{% endif %}
+		    	{% if page.focal %}<td>{{ page.focal }}</td>{% endif %}
 			</tr>
-		</table>
+		</table>{% endif %}
 	</figcaption>
 
-	<article class="section">
+	<article id="article" class="section">
 		{{ content }}
 	</article>
-
-	<section class="center">
-		{% include nav.html %}
-	</section>
 </main>
+
+<script>
+	if (!article.innerText) article.style.display = "none"
+</script>

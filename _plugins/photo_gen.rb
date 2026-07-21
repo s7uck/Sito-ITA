@@ -76,7 +76,7 @@ module Jekyll
 				if exif['OPMedia:IsHDRActive']
 					mode += ' HDR'
 				end
-				description = exif['Comment']
+				description = exif['Comment'] || ''
 
 				photo_data = {
 					'layout' => 'photo',
@@ -95,7 +95,7 @@ module Jekyll
 					'mini' => image_thumbnail_filename,
 				}
 
-				photo_data.reject! { |p| p.empty? }
+				photo_data.reject! { |a,p| p.nil? || (p.respond_to?(:empty?) && p.empty?) }
 
 				photo_page = PageWithoutAFile.new(site, site.source, container_dir, "#{image_filename}.md")
 				photo_page.data.merge!(photo_data)
