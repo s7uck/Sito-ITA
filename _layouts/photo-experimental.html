@@ -1,0 +1,87 @@
+---
+layout: default
+class: flex
+---
+
+<style>
+	body {
+		border: 10vw solid transparent;
+		justify-content: space-evenly;
+		gap: 2em;
+		flex-wrap: wrap;
+	}
+	#photo-frame {
+		padding: 0; gap: 0;
+		flex-wrap: nowrap;
+	}
+	#photo-frame>img { max-height: 90vh;}
+	#left-right {
+		margin: 0;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 50%;
+	}
+	#left-right li {
+		padding: 1em 0.4em;
+		background-size: 80%;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	#left-right menu { justify-content: space-between;}
+</style>
+
+<figure class="section" id="photo-frame">{% if page.title %}
+	<header>
+		<h3>{{ page.title }}</h3>
+	</header>
+
+	{% endif %}
+	<img src="{{ page.image }}" alt="{{ page.title | default: page.filename }}"  onclick="window.location = '{{ page.image }}'">
+
+	<figcaption>
+		<table id="exifdata">
+			<tr class="ani">{% if page.camera %}
+				<td><img class="icon" src="/images/camera.svg" alt="Camera">
+					{{ page.camera }}
+				</td>{% endif %}{% if page.location %}
+				<td><img class="icon" src="/images/location.svg" alt="Location">
+					{{ page.location }}
+				</td>{% endif %}
+				<td class="timestamp"><time>{{ page.date | date: "%b %-d %Y, %H:%M:%S" }}</time></td>
+			</tr>
+		</table>{% if page.mode %}
+
+		<table id="settings">
+			<tr>
+				<th class="accent" style="font-family: 'Archivo Black">{{ page.mode | upcase }}</th>
+		    	{% if page.aperture %}<td>f/{{ page.aperture }}</td>{% endif %}
+		    	{% if page.sspeed %}<td>{{ page.sspeed }} seconds</td>{% endif %}
+		    	{% if page.iso %}<td>ISO {{ page.iso }}</td>{% endif %}
+		    	{% if page.focal %}<td>{{ page.focal }}</td>{% endif %}
+			</tr>
+		</table>{% endif %}
+	</figcaption>
+</figure>
+
+{% assign wordcount = content | number_of_words %}
+{% if wordcount != 0 %}
+<section style="min-width: 40%;">
+	<article>
+		{{ content }}
+	</article>
+</section>
+{% endif %}
+
+<footer style="width: 100%">
+	<nav><menu>
+		<li><a href="/gallery"><img class="icon" src="/images/camera.svg"> tutte le foto</a></li>
+	</menu></nav>
+</footer>
+
+<nav id="left-right">
+	<menu>
+		<li id="prev"><a href="{{ page.previous }}"><img src="/images/back.svg"></a></li>
+		<li id="next"><a href="{{ page.next }}"><img src="/images/forward.svg"></a></li>
+	</menu>
+</nav>
