@@ -2,11 +2,6 @@
 layout: home
 ---
 
-<dialog class="section" open style="position: absolute;top: 0;transform: translateY(25%);box-shadow: 0 0 100vw 10vw black;">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Lanterna_gialla_lampeggiante.gif">
-	<h1>Sito in costruzione</h1>
-</dialog>
-
 <main class="gridlock">
 	<section class="center">
 		<h2>Chi sono?</h2>
