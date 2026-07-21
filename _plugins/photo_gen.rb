@@ -3,17 +3,17 @@ require "open-uri"
 module Jekyll
 	class PhotoPageGenerator < Generator
 		def generate(site)
-			photo_repo = "s7uck/photos" # aka my repo s7uck/photos
+			photo_repo = Jekyll.configuration({})['photos']['photo_repo'] # aka my repo s7uck/photos
 			photo_baseurl = "https://raw.githubusercontent.com/#{photo_repo}/master/"
-			output_url = "photos"
+			output_url = Jekyll.configuration({})['photos']['output_url']
 			photos = []
 			FileUtils.mkdir_p(File.join(site.dest, output_url))
 
 			all_exifdata = File.join(site.dest, output_url, "EXIFDATA.json")
 			remote_exif_url = "#{photo_baseurl}EXIFDATA.json"
-
-			## UNCOMMENT FOR TESTING
-			#remote_exif_url="https://pastebin.com/raw/nGkAHD0Z"
+			if Jekyll.configuration({})['photos']['remote_exif_url']
+				remote_exif_url = Jekyll.configuration({})['photos']['remote_exif_url']
+			end
 
 			begin
 				URI.open(remote_exif_url) do |remote|
@@ -79,7 +79,7 @@ module Jekyll
 				description = exif['Comment'] || ''
 
 				photo_data = {
-					'layout' => 'photo',
+					'layout' => 'photo-experimental',
 					'title' => title,
 					'date' => capture_time,
 					'location' => location,
@@ -92,7 +92,7 @@ module Jekyll
 					'rating' => rating,
 					'mode' => mode,
 					'filename' => image_filename,
-					'mini' => image_thumbnail_filename,
+					'mini' => image_thumbnail_filename
 				}
 
 				photo_data.reject! { |a,p| p.nil? || (p.respond_to?(:empty?) && p.empty?) }

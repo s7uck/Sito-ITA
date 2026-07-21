@@ -11,6 +11,12 @@ kramdown:
 plugins:
   - jekyll-feed
 
+photos:
+  photo_repo: "s7uck/photos"
+  output_url: "photos"
+  ## UNCOMMENT FOR TESTING
+  #remote_exif_url: "https://pastebin.com/raw/DsAnyFKz"
+
 defaults:
   - scope:
       path: ""
